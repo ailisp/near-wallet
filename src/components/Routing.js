@@ -20,6 +20,10 @@ import { AuthorizedAppsWithRouter } from './authorized-apps/AuthorizedApps'
 import { SendMoneyWithRouter } from './send-money/SendMoney'
 import { ProfileWithRouter } from './profile/Profile'
 import { SignWithRouter } from './sign/Sign'
+import { NodeStakingWithRouter } from './node-staking/NodeStaking'
+import { AddNodeWithRouter } from './node-staking/AddNode'
+import { NodeDetailsWithRouter } from './node-staking/NodeDetails'
+import { StakingWithRouter } from './node-staking/Staking'
 
 import { handleRefreshAccount, handleRefreshUrl } from '../actions/account'
 
@@ -98,6 +102,26 @@ class Routing extends Component {
                               exact
                               path='/sign'
                               component={SignWithRouter}
+                           />
+                           <PrivateRoute
+                              exact
+                              path='/node-staking'
+                              component={NodeStakingWithRouter}
+                           />
+                           <PrivateRoute
+                              exact
+                              path='/add-node'
+                              component={AddNodeWithRouter}
+                           />
+                           <PrivateRoute
+                              exact
+                              path='/node-details'
+                              component={NodeDetailsWithRouter}
+                           />
+                           <PrivateRoute
+                              exact
+                              path='/staking'
+                              component={StakingWithRouter}
                            />
                            <PrivateRoute 
                               component={DashboardDetailWithRouter} 
