@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 import { Image, Loader } from 'semantic-ui-react'
 
@@ -66,10 +67,22 @@ const CustomDiv = styled('div')`
             color: #fff;
          }
       }
+      .node-staking {
+         > div {
+            > div {
+               float: left;
+            }
+            .staking {
+               color: #999;
+               font-size: 14px;
+               line-height: 26px;
+            }
+         }
+      }
    }
 `
 
-const PopupMenuTrigger = ({ account, handleClick, type, dropdown = false }) => (
+const PopupMenuTrigger = ({ account, handleClick, type, dropdown = false, location }) => (
    <CustomDiv onClick={handleClick}>
       <div>
          <div className={`account-arrow ${type}`}>
@@ -86,7 +99,7 @@ const PopupMenuTrigger = ({ account, handleClick, type, dropdown = false }) => (
                   `@${account.accountId}`
                )}
             </div>
-            <div className='account-tokens'>
+            <div className={`account-tokens ${location.pathname === `/node-staking` ? `node-staking` : ``}`}>
                {account.loader || !account.accountId ? (
                   <Loader active inline size='mini' />
                ) : (
@@ -94,6 +107,10 @@ const PopupMenuTrigger = ({ account, handleClick, type, dropdown = false }) => (
                         {account.amount 
                         ? <Balance amount={account.amount} milli={milli} /> 
                         : 'NaN'}
+
+                        {location.pathname === '/node-staking' && (
+                           <div className='staking'>&nbsp;/ 202,250.0025</div>
+                        )}
                      </div>
                   )}
             </div>
@@ -102,4 +119,4 @@ const PopupMenuTrigger = ({ account, handleClick, type, dropdown = false }) => (
    </CustomDiv>
 )
 
-export default PopupMenuTrigger
+export default withRouter(PopupMenuTrigger)
