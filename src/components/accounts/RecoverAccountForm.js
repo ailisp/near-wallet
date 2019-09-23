@@ -23,14 +23,14 @@ const RecoverAccountForm = ({
    <Fragment>
       {!sentSms && (
          <Fragment>
-            <Header as='h3'>Username</Header>
+            <Header as='h4'>Username</Header>
             <AccountFormAccountId
                formLoader={formLoader}
                handleChange={handleChange}
                defaultAccountId={accountId}
             />
             
-            <Header as='h3'>Phone Number</Header>
+            <Header as='h4'>Phone Number</Header>
             <PhoneInput
                className={`create ${
                   requestStatus
@@ -53,7 +53,7 @@ const RecoverAccountForm = ({
 
       {sentSms && (
          <Fragment>
-         <Header as='h3' className='digit-code empty'>&nbsp;</Header>
+            <Header as='h4' className='digit-code empty'>&nbsp;</Header>
             <Input
                name='securityCode'
                onChange={handleChange}
